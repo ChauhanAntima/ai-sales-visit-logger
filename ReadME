@@ -1,0 +1,179 @@
+# AI Sales Visit Logger
+
+A React Native (Expo) mobile application for field sales representatives to log customer visits and generate AI-assisted follow-up summaries.
+
+This app allows users to record visit details, generate structured summaries using AI, store logs locally for offline use, and simulate syncing with a backend.
+
+---
+
+# Features
+
+### Authentication
+
+* User login and signup
+* Session persistence using AsyncStorage
+
+### Visit Logging
+
+Users can create and edit visit logs including:
+
+* Customer name
+* Contact person
+* Location
+* Visit date
+* Meeting notes
+* Outcome status
+* Next follow-up date
+
+### AI Generated Summary
+
+The app generates structured summaries from raw meeting notes including:
+
+* Meeting summary
+* Pain points
+* Action items
+* Recommended next steps
+
+### Offline Support
+
+* Visit logs are stored locally using AsyncStorage
+* Users can create and edit visits without internet connection
+
+### Sync System
+
+Each visit log has a sync status:
+
+* draft
+* syncing
+* synced
+* failed
+
+Failed sync attempts can be retried from the visit detail screen.
+
+### Visit Detail Screen
+
+* View full visit information
+* View AI generated summary
+* Retry sync if needed
+* Edit visit entry
+
+---
+
+# Tech Stack
+
+* React Native
+* Expo
+* TypeScript
+* AsyncStorage
+* Gemini AI API
+
+---
+
+# Project Setup
+
+Clone the repository:
+
+```bash id="clone_repo"
+git clone https://github.com/YOUR_USERNAME/ai-sales-visit-logger.git
+cd ai-sales-visit-logger
+```
+
+Install dependencies:
+
+```bash id="install_deps"
+npm install
+```
+
+Start the development server:
+
+```bash id="start_project"
+npx expo start
+```
+
+You can run the app using:
+
+* Expo Go (mobile)
+* Web browser
+
+---
+
+# Environment Variables
+
+Create a `.env` file in the root directory:
+
+```
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+This API key is used for generating AI-powered summaries from meeting notes.
+
+Make sure `.env` is added to `.gitignore` so that the API key is not pushed to GitHub.
+
+---
+
+# Architecture Overview
+
+## Data Flow
+
+User enters visit data → visit logs are stored locally using AsyncStorage → logs appear in the visit list → sync service updates sync status.
+
+## Local Persistence
+
+Visit logs are saved locally using AsyncStorage which allows the application to work offline.
+
+## Sync Approach
+
+Each visit contains a `syncStatus` field:
+
+* draft → newly created visit
+* syncing → syncing in progress
+* synced → successfully synced
+* failed → sync failed
+
+Users can retry syncing failed entries from the visit detail screen.
+
+## AI Integration
+
+The app integrates Gemini AI API to generate structured summaries from raw meeting notes.
+
+The generated summary includes:
+
+* Meeting Summary
+* Pain Points
+* Action Items
+* Recommended Next Step
+
+---
+
+# Tools Used
+
+* React Native
+* Expo
+* TypeScript
+* AsyncStorage
+* Gemini AI API
+* AI coding assistance tools
+
+---
+
+# Demo
+
+The demo video demonstrates the following workflow:
+
+1. Login / Signup
+2. Create a visit log
+3. Enter meeting notes
+4. Generate AI summary
+5. Save visit
+6. View visit list
+7. Open visit detail screen
+8. Retry sync for failed entries
+
+---
+
+# Future Improvements
+
+* Real backend API integration
+* Automatic background syncing
+* Improved UI/UX
+* Secure authentication backend
